@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CounterContainer } from 'containers'
+import { HomePage } from 'containers'
 import { Header } from 'components'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
@@ -12,7 +12,7 @@ class Routes extends Component {
       <Router>
         <Container>
           <Header />
-          <Route path="/" component={CounterContainer} />
+          <Route path="/" component={HomePage} />
         </Container>
       </Router>
     )
