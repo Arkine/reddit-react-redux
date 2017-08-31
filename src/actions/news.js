@@ -9,29 +9,19 @@ export function getAllNews() {
   console.log('get all news called')
 
   try {
-    return {
-      type: GET_NEWS_SUCCESS,
-      postsList: {
-        items: [1, 2, 3],
-        error: {
-          message: '',
-          value: true,
-        },
-        loading: false,
-      },
-    }
-  } catch (error) {
-    return {
-      type: GET_NEWS_FAILED,
-      postsList: {
-        items: [],
-        error: {
-          message: error,
-          value: true,
-        },
-        loading: false,
-      },
-    }
+  } catch (error) {}
+}
+
+export function getNewsSuccess(items) {
+  return {
+    type: GET_NEWS_SUCCESS,
+    items: [1, 2, 3],
+  }
+}
+
+export function getNewsFailed() {
+  return {
+    type: GET_NEWS_FAILED,
   }
 }
 
