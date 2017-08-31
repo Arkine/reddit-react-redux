@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux'
-import { fetchingNewsStarted, postsList } from './news'
+import { posts } from './news'
 
 const rootReducer = combineReducers({
-  fetchingNewsStarted,
-  postsList,
+  posts,
 })
 
 export default rootReducer

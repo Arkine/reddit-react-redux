@@ -12,10 +12,10 @@ export function getAllNews() {
     return {
       type: GET_NEWS_SUCCESS,
       postsList: {
-        posts: [],
+        items: [1, 2, 3],
         error: {
           message: '',
-          value: false,
+          value: true,
         },
         loading: false,
       },
@@ -24,11 +24,12 @@ export function getAllNews() {
     return {
       type: GET_NEWS_FAILED,
       postsList: {
-        posts: [],
+        items: [],
         error: {
           message: error,
           value: true,
         },
+        loading: false,
       },
     }
   }

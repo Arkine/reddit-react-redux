@@ -9,13 +9,16 @@ import * as NewsActions from 'actions/news'
 class NewsList extends React.Component {
   static propTypes = {
     getAllNews: PropTypes.func.isRequired,
-    news: PropTypes.array.isRequired,
+    posts: PropTypes.object.isRequired,
     fetchingNewsStarted: PropTypes.bool,
   }
 
   componentWillMount() {
-    console.log('props', this.props)
     this.props.getAllNews()
+  }
+
+  componentDidMount() {
+    console.log('mounted:', this.props)
   }
 
   render() {
@@ -25,8 +28,7 @@ class NewsList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    news: state.news,
-    fetchingNewsStarted: state.fetchingNewsStarted,
+    posts: state.posts,
   }
 }
 
