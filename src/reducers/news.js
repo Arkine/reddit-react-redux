@@ -13,10 +13,13 @@ export function fetchingNewsStarted(state = false, action) {
   return state
 }
 
-export function news(state = [], action) {
+export function postsList(state = [], action) {
+  console.log(action)
   switch (action.type) {
     case GET_NEWS_SUCCESS:
-      return [...action.payload]
+      return action.postsList
+    case GET_NEWS_FAILED:
+      return action.postsList
   }
 
   return state

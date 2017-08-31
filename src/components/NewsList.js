@@ -10,16 +10,12 @@ class NewsList extends React.Component {
   static propTypes = {
     getAllNews: PropTypes.func.isRequired,
     news: PropTypes.array.isRequired,
-    fetchingNewsStated: PropTypes.bool.isRequired,
-  }
-
-  getAllNews = () => {
-    this.props.getAllNews()
+    fetchingNewsStarted: PropTypes.bool,
   }
 
   componentWillMount() {
     console.log('props', this.props)
-    // this.props.getAllNews();
+    this.props.getAllNews()
   }
 
   render() {
@@ -30,7 +26,7 @@ class NewsList extends React.Component {
 function mapStateToProps(state) {
   return {
     news: state.news,
-    fetchingNewsStated: state.fetchingNewsStated,
+    fetchingNewsStarted: state.fetchingNewsStarted,
   }
 }
 
