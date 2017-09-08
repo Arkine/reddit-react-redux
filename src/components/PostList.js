@@ -4,17 +4,18 @@ import { createStructuredSelector, createSelector } from 'reselect'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as NewsActions from 'actions/news'
+import { postActionCreators } from 'actions/posts'
 
-class NewsList extends React.Component {
+class PostList extends React.Component {
   static propTypes = {
-    getAllNews: PropTypes.func.isRequired,
     posts: PropTypes.object.isRequired,
     fetchingNewsStarted: PropTypes.bool,
   }
 
   componentWillMount() {
-    this.props.getAllNews()
+    // const { dispatch } = this.props;
+
+    this.props.getAllItems()
   }
 
   componentDidMount() {
@@ -33,7 +34,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(NewsActions, dispatch)
+  return bindActionCreators(postActionCreators, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsList)
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)
