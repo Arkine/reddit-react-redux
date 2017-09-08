@@ -80,21 +80,21 @@ export function createActionCreators(modelType, names) {
           },
           {
             id: 763455,
-            title: 'test 1',
+            title: 'test 2',
             date: 64234,
-            excerpt: 'Blagh blagh blagh',
+            excerpt: 'bleep bloop',
           },
           {
             id: 77323,
-            title: 'test 1',
+            title: 'test 3',
             date: 234234,
-            excerpt: 'Blagh blagh blagh',
+            excerpt: 'BEEW BEWW!',
           },
           {
             id: 34,
-            title: 'test 1',
+            title: 'test 123',
             date: 23442,
-            excerpt: 'Blagh blagh blagh',
+            excerpt: '1 2 3',
           },
         ]
 

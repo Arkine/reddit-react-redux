@@ -6,4 +6,5 @@ export default class Post extends BaseModel {
   date = 0
   keywords = ['']
   categories = ['']
+  thumbnail = ''
 }
