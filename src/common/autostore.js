@@ -1,3 +1,6 @@
+import map from './map'
+import dataState from './dataState'
+
 export const defaultActions = [
   'GET_ITEM_STARTED',
   'GET_ITEM_FAILED',
@@ -75,6 +78,24 @@ export function createActionCreators(modelType, names) {
             date: 1234123,
             excerpt: 'Blagh blagh blagh',
           },
+          {
+            id: 763455,
+            title: 'test 1',
+            date: 64234,
+            excerpt: 'Blagh blagh blagh',
+          },
+          {
+            id: 77323,
+            title: 'test 1',
+            date: 234234,
+            excerpt: 'Blagh blagh blagh',
+          },
+          {
+            id: 34,
+            title: 'test 1',
+            date: 23442,
+            excerpt: 'Blagh blagh blagh',
+          },
         ]
 
         dispatch(result.getItemsSuccess(items))
@@ -90,34 +111,46 @@ export function createActionCreators(modelType, names) {
 
 export function createReducer(model, names) {
   const result = {
-    store(state = [], action) {
+    store(state = {}, action) {
       switch (action.type) {
         case names.GET_ITEMS_SUCCESS:
+          return map.merge(state, map.fromList(action.items, 'id'))
         case names.SAVE_ITEMS_SUCCESS:
+          return map.setOrMerge(state, action.item.id, action.item)
         case names.DELETE_ITEMS_SUCCESS:
+          return map.delete(state, action.id)
         default:
           return state
       }
     },
 
-    state(state = [], action) {
+    state(state = {}, action) {
       switch (action.type) {
         case names.GET_ITEM_STARTED:
+          return map.set(state, action.id, dataState.Loading)
         case names.GET_ITEM_FAILED:
+          return map.set(state, action.id, dataState.Failed)
         case names.GET_ITEMS_SUCCESS:
-          console.log('ACTION ITEMS', action)
-          return action.items
+          console.log('kevan', dataState.Loaded)
+          return map.merge(
+            state,
+            map.fromList(action.items, 'id', dataState.Loaded)
+          )
         case names.DELETE_ITEMS_SUCCESS:
+          return map.set(state, action.id, dataState.Deleted)
         default:
           return state
       }
     },
 
-    allState(state = [], action) {
+    allState(state = null, action) {
       switch (action.type) {
         case names.GET_ALL_ITEMS_STARTED:
+          return dataState.Loading
         case names.GET_ALL_ITEMS_SUCCESS:
+          return dataState.Loaded
         case names.GET_ALL_ITEMS_FAILED:
+          return dataState.Failed
         default:
           return state
       }
