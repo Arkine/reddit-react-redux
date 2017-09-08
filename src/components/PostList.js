@@ -13,8 +13,6 @@ class PostList extends React.Component {
   }
 
   componentWillMount() {
-    // const { dispatch } = this.props;
-
     this.props.getAllItems()
   }
 
