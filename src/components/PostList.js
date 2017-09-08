@@ -9,7 +9,7 @@ import { postActionCreators } from 'actions/posts'
 class PostList extends React.Component {
   static propTypes = {
     posts: PropTypes.object.isRequired,
-    fetchingNewsStarted: PropTypes.bool,
+    getAllItems: PropTypes.func.isRequired,
   }
 
   componentWillMount() {
@@ -21,13 +21,36 @@ class PostList extends React.Component {
   }
 
   render() {
-    return <h1>This is the News list</h1>
+    const { posts } = this.props
+    console.log('posts:', posts)
+
+    const postEls = Object.keys(posts).map((key, index) => {
+      return (
+        <li key={posts[key].id}>
+          <h2>
+            {posts[key].title}
+          </h2>
+          <p>
+            {posts[key].excerpt}
+          </p>
+        </li>
+      )
+    })
+
+    return (
+      <div>
+        <h1>This is the News list</h1>
+        <ul>
+          {postEls}
+        </ul>
+      </div>
+    )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts,
+    posts: state.posts.store,
   }
 }
 
