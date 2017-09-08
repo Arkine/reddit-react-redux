@@ -2,9 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { createStructuredSelector, createSelector } from 'reselect'
 
+import Loading from './Loading'
+
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { postActionCreators } from 'actions/posts'
+
+import DataState from 'common/dataState'
 
 class PostList extends React.Component {
   static propTypes = {
@@ -21,17 +25,20 @@ class PostList extends React.Component {
   }
 
   render() {
-    const { posts } = this.props
-    console.log('posts:', posts)
+    const { posts, allState } = this.props
 
-    const postEls = Object.keys(posts).map((key, index) => {
+    // if (posts.allState === DataState.Loading || posts.allState === null) {
+    return <Loading />
+    // }
+
+    const postEls = Object.keys(posts.store).map((key, index) => {
       return (
-        <li key={posts[key].id}>
+        <li key={posts.store[key].id}>
           <h2>
-            {posts[key].title}
+            {posts.store[key].title}
           </h2>
           <p>
-            {posts[key].excerpt}
+            {posts.store[key].excerpt}
           </p>
         </li>
       )
@@ -50,7 +57,7 @@ class PostList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts.store,
+    posts: state.posts,
   }
 }
 

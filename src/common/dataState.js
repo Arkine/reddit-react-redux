@@ -1,5 +1,5 @@
 const dataState = {
-  Loading: 'Loading..',
+  Loading: 'Loading',
   Loaded: 'Loaded',
   Failed: 'Failed',
   Deleted: 'Deleted',
