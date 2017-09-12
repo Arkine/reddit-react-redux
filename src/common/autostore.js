@@ -1,6 +1,8 @@
 import map from './map'
 import dataState from './dataState'
 
+import dataSource from 'common/dataSource'
+
 export const defaultActions = [
   'GET_ITEM_STARTED',
   'GET_ITEM_FAILED',
@@ -70,33 +72,34 @@ export function createActionCreators(modelType, names) {
       dispatch(result.getAllItemsStarted())
 
       try {
-        // const items = await.modelType.getAll(dataSource.adapter);
-        const items = [
-          {
-            id: 12345,
-            title: 'test 1',
-            date: 1234123,
-            excerpt: 'Blagh blagh blagh',
-          },
-          {
-            id: 763455,
-            title: 'test 2',
-            date: 64234,
-            excerpt: 'bleep bloop',
-          },
-          {
-            id: 77323,
-            title: 'test 3',
-            date: 234234,
-            excerpt: 'BEEW BEWW!',
-          },
-          {
-            id: 34,
-            title: 'test 123',
-            date: 23442,
-            excerpt: '1 2 3',
-          },
-        ]
+        const items = await modelType.getAll(dataSource.adapter)
+        console.log('kevan items', items)
+        // const items = [
+        //   {
+        //     id: 12345,
+        //     title: 'test 1',
+        //     date: 1234123,
+        //     excerpt: 'Blagh blagh blagh',
+        //   },
+        //   {
+        //     id: 763455,
+        //     title: 'test 2',
+        //     date: 64234,
+        //     excerpt: 'bleep bloop',
+        //   },
+        //   {
+        //     id: 77323,
+        //     title: 'test 3',
+        //     date: 234234,
+        //     excerpt: 'BEEW BEWW!',
+        //   },
+        //   {
+        //     id: 34,
+        //     title: 'test 123',
+        //     date: 23442,
+        //     excerpt: '1 2 3',
+        //   },
+        // ]
 
         dispatch(result.getItemsSuccess(items))
         dispatch(result.getAllItemsSuccess(items))

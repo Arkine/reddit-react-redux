@@ -27,9 +27,9 @@ class PostList extends React.Component {
   render() {
     const { posts, allState } = this.props
 
-    // if (posts.allState === DataState.Loading || posts.allState === null) {
-    return <Loading />
-    // }
+    if (posts.allState === DataState.Loading || posts.allState === null) {
+      return <Loading />
+    }
 
     const postEls = Object.keys(posts.store).map((key, index) => {
       return (
